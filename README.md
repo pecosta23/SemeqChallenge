@@ -7,22 +7,15 @@ Exercício com o intuito de identificar tipos de falhas mecânicas com base em p
 
 O banco de dados contém dados de sensores em um simulador de falhas mecânicas (MFS).
 Foram consideradas duas classes:
-Normal
-Imbalance (diferentes níveis de desbalanceamento)
+Normal e Imbalance (diferentes níveis de desbalanceamento)
 
 
 # Pré-processamento
 
 1 - StandardScaler e Estatísticas:
-RMS
-Média
-Desvio padrão
-Skewness
-Kurtosis
+RMS, Média, Desvio padrão, Skewness, e Kurtosis com Padronização no StandardScaler
 
-Padronização com StandardScaler
-
-Essas features resumem o comportamento global do sinal e são utilizadas em manutenção preditiva por serem interpretáveis e confiáveis.
+Essas features resumem o comportamento global do dados e são utilizadas em manutenção preditiva por serem interpretáveis e confiáveis.
 
 
 2 - Aplicação da Transformada Rápida de Fourier:
