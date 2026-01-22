@@ -42,7 +42,7 @@ usado em aplicações industriais
 
 A escolha do modelo depende do contexto operacional enquanto o Random Forest apresentou melhor equilíbrio conseguindo generalizar mais os dados, o XGBoost mostrou-se mais sensível à detecção de falhas, sendo mais adequado para cenários onde a prioridade é evitar falhas não detectadas. 
 
-Entretanto, essa sensibilidade veio acompanhada de um aumento significativo de falsos positivos na classe "normal", o que não seria recomendado para um modelo de produção. Nesse quesito o RandomFoverest se destaca por seu resultado mais equilibrado e generalizado.
+Entretanto, essa sensibilidade veio acompanhada de um aumento significativo de falsos positivos na classe "normal", o que não seria recomendado para um modelo de produção. Por isso, o RandomFoverest se destaca por seu resultado mais equilibrado e generalizado.
 
 Tentei modificar o pré-processamento de diversas maneiras, mas não obtive um resultado satisfatório.
 
