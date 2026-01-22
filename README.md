@@ -25,6 +25,7 @@ Falhas mecânicas costumam apresentar discrepâncias específicas nos dados, o q
 
 
 # Modelos
+
 Random Forest Classifier:
 Seguro contra o ruído dos dados
 Boa performance sem causar overfitting
@@ -35,3 +36,17 @@ Utilizado com features extraídas via FFT
 Alta capacidade de modelagem não linear
 Forte desempenho em dados tabulares
 Amplamente usado em aplicações industriais
+
+
+# Sobre os modelos e resultados
+
+A escolha do modelo depende do contexto operacional enquanto o Random Forest apresentou melhor equilíbrio conseguindo generalizar mais os dados, o XGBoost mostrou-se mais sensível à detecção de falhas, sendo mais adequado para cenários onde a prioridade é evitar falhas não detectadas. 
+
+Entretanto, essa sensibilidade veio acompanhada de um aumento significativo de falsos positivos na classe normal, o que não seria recomendado para um modelo de produção.
+
+Tentei modificar o pré-processamento de diversas maneiras, mas não obtive um resultado satisfatório.
+
+
+# Resolução
+
+O que eu vejo nos modelos é um potencial de crescimento bom de análise para o XGB em casos de "imbalance", ao mesmo tempo utilizaria o resultado da classe "normal" do modelo RandomForest, essa combinação acertaria os pontos críticos de ambas as classes em um mundo utópico. As discrepâncias que o XGB apresenta na classe "normal" ao meu conhecimento é uma limitação do modelo, contudo, continuarei a tentar melhorar seu desempenho.
