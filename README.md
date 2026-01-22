@@ -28,14 +28,14 @@ Falhas mecânicas costumam apresentar discrepâncias específicas nos dados, o q
 
 Random Forest Classifier:
 Seguro contra o ruído dos dados
-Boa performance sem causar overfitting
-Interpretabilidade e generealização relativa
+com boa performance sem causar overfitting,
+interpretabilidade e generealização relativa
 
 XGBoost Classifier:
-Utilizado com features extraídas via FFT
-Alta capacidade de modelagem não linear
-Forte desempenho em dados tabulares
-Amplamente usado em aplicações industriais
+Utilizado com features extraídas via FFT,
+alta capacidade de modelagem não linear,
+forte desempenho em dados tabulares,
+usado em aplicações industriais
 
 
 # Sobre os modelos e resultados
