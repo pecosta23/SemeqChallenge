@@ -1,52 +1,72 @@
-# Objetico principal
+# Main Objective
 
-Exercício com o intuito de identificar tipos de falhas mecânicas com base em padrões reportados por sensores do dataset "Machinery Fault Dataset" (MAFAULDA)
-
+This project aims to identify types of mechanical failures based on patterns reported by sensors from the **Machinery Fault Dataset (MAFAULDA)**.
 
 # Dataset
 
-O banco de dados contém dados de sensores em um simulador de falhas mecânicas (MFS).
-Foram consideradas duas classes:
-Normal e Imbalance (diferentes níveis de desbalanceamento)
+The dataset contains sensor data collected from a **Mechanical Failure Simulator (MFS)**.
 
+Two classes were considered:
 
-# Pré-processamento
+- **Normal**
+- **Imbalance** (different levels of imbalance)
 
-1 - StandardScaler e Estatísticas:
-RMS, Média, Desvio padrão, Skewness, e Kurtosis com Padronização no StandardScaler
+# Preprocessing
 
-Essas features resumem o comportamento global do dados e são utilizadas em manutenção preditiva por serem interpretáveis e confiáveis.
+### 1. StandardScaler and Statistical Features
 
+The following statistical features were extracted:
 
-2 - Aplicação da Transformada Rápida de Fourier:
-Extração das primeiras componentes do espectro
+- RMS (Root Mean Square)
+- Mean
+- Standard Deviation
+- Skewness
+- Kurtosis
 
-Falhas mecânicas costumam apresentar discrepâncias específicas nos dados, o que torna a FFT uma técnica viável no diagnóstico de falhas.
+After feature extraction, the data was standardized using **StandardScaler**.
 
+These features summarize the global behavior of the data and are widely used in **predictive maintenance** due to their interpretability and reliability.
 
-# Modelos
+### 2. Fast Fourier Transform (FFT)
 
-Random Forest Classifier:
-Seguro contra o ruído dos dados
-com boa performance sem causar overfitting,
-interpretabilidade e generealização relativa
+The **Fast Fourier Transform** was applied to extract the first components of the frequency spectrum.
 
-XGBoost Classifier:
-Utilizado com features extraídas via FFT,
-alta capacidade de modelagem não linear,
-forte desempenho em dados tabulares,
-usado em aplicações industriais
+Mechanical failures often produce specific discrepancies in vibration signals, making **FFT a viable technique for fault diagnosis**.
 
+# Models
 
-# Sobre os modelos e resultados
+## Random Forest Classifier
 
-A escolha do modelo depende do contexto operacional enquanto o Random Forest apresentou melhor equilíbrio conseguindo generalizar mais os dados, o XGBoost mostrou-se mais sensível à detecção de falhas, sendo mais adequado para cenários onde a prioridade é evitar falhas não detectadas. 
+- Robust against noisy data
+- Good performance without significant overfitting
+- Relatively interpretable
+- Good generalization capability
 
-Entretanto, essa sensibilidade veio acompanhada de um aumento significativo de falsos positivos na classe "normal", o que não seria recomendado para um modelo de produção. Tentei modificar o pré-processamento de diversas maneiras, mas não obtive um resultado satisfatório.
+## XGBoost Classifier
 
-Desse modo, o RandomForest se destaca por seu resultado mais equilibrado e generalizado, podendo ser uma escolha para produção
+- Used with FFT-based features
+- High capacity for nonlinear modeling
+- Strong performance on tabular datasets
+- Commonly used in industrial applications
 
+# Model Performance and Results
 
-# Resolução
+The choice of model depends on the operational context.
 
-O que eu vejo nos modelos é um potencial de crescimento bom de análise para o XGB em casos de "imbalance", ao mesmo tempo utilizaria o resultado da classe "normal" do modelo RandomForest, essa combinação acertaria os pontos críticos de ambas as classes em um mundo utópico. As discrepâncias que o XGB apresenta na classe "normal" ao meu conhecimento é uma limitação do modelo, contudo, continuarei a tentar melhorar seu desempenho.
+The **Random Forest model** presented a more balanced performance and demonstrated better generalization across the dataset.
+
+The **XGBoost model**, on the other hand, showed higher sensitivity in detecting mechanical faults, making it potentially more suitable for scenarios where **missing a failure is unacceptable**.
+
+However, this increased sensitivity resulted in a significant number of **false positives in the "Normal" class**, which would not be ideal for a production environment.
+
+Several preprocessing strategies were tested to mitigate this issue, but none produced fully satisfactory results.
+
+As a result, the **Random Forest model stands out for its more balanced and generalized performance**, making it a stronger candidate for production use.
+
+# Discussion
+
+From my perspective, the **XGBoost model shows strong potential for detecting imbalance-related failures**, while the **Random Forest model performs more reliably when identifying the Normal class**.
+
+In an ideal scenario, combining the strengths of both models could produce better results — leveraging the **fault detection sensitivity of XGBoost** together with the **stability of Random Forest for normal operation classification**.
+
+The inconsistencies observed in XGBoost when predicting the "Normal" class may reflect limitations of the current modeling approach or feature representation. Further experimentation with preprocessing, feature engineering, and model tuning will be explored to improve its performance.
